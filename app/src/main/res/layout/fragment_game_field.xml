@@ -1,11 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
     tools:context=".GameField">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal">
+
+        <Button
+            android:id="@+id/c1x1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c1x1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c1x2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c1x2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c1x3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c1x3"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c1x4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c1x4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal">
+
+        <Button
+            android:id="@+id/c2x1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c2x1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c2x2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c2x2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c2x3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c2x3"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c2x4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c2x4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal">
+
+        <Button
+            android:id="@+id/c3x1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c3x1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c3x2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c3x2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c3x3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c3x3"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c3x4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c3x4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/c4x1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c4x1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c4x2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c4x2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c4x3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c4x3"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/c4x4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="95sp"
+            android:layout_height="95sp"
+            android:layout_margin="0dp"
+            android:text="@string/c4x4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </TableRow>
 
 
-</FrameLayout>
+</TableLayout>
