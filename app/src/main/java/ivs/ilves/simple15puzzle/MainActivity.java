@@ -1,25 +1,22 @@
 package ivs.ilves.simple15puzzle;
 
-//import android.content.Context;
-//import android.content.DialogInterface;
-//import android.support.v7.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-//import android.widget.Toast;
+
 import java.util.Arrays;
-//import java.util.Collections;
+
 
 /**
  * Main class
  */
 public class MainActivity extends AppCompatActivity {
+    static String[] startArray;
     private static String[] nextTurnArray;
-    private static Integer turnCount = 0;
-    //private static Integer resultCode = 0;
+    private static int turnCount = 0;
 
     /**
      * Get method for NextTurnArray.
@@ -50,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String[] randomArray;
-        TextView CountField = findViewById(R.id.countShow);
+        TextView countField = findViewById(R.id.countShow);
         Button reloadBtn = findViewById(R.id.reloadBtn);
 
         // Making the first array.
-        String[] startArray = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "0"};
+        if (turnCount == 0) {
+            startArray = DoArrays.StartArrayGenerator();
+        }
 
         if (getNextTurnArray() == null) {
 
@@ -64,21 +63,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             randomArray = getNextTurnArray();
+
             turnCount += 1;
-            CountField.setText("Count of turns: " + String.valueOf(turnCount));
+
+            countField.setText("Count of turns: " + String.valueOf(turnCount));
 
             if (Arrays.equals(startArray, randomArray)) {
-                CountField.setText("You win!!! You make " + String.valueOf(turnCount) + " turns");
+                countField.setText("You win!!! You make " + String.valueOf(turnCount) + " turns");
                 reloadBtn.setVisibility(View.VISIBLE);
             }
         }
 
         // Generating the game field and returning zero button ID.
-        String zeroBtnID = GameFieldGenerator(randomArray);
+        String zeroBtnIndex = GameFieldGenerator(randomArray);
 
         // Setting up 4 pressable keys and recreating array with use pressed key.
-        SetPressedKeys(zeroBtnID, randomArray);
-
+        SetPressedKeys(zeroBtnIndex, randomArray);
     }
 
     /**
@@ -89,81 +89,83 @@ public class MainActivity extends AppCompatActivity {
      */
     public String GameFieldGenerator(String[] randomArray) {
 
-        Integer numberButton = 0;
-        Integer firstIndex = 1;
-        String zeroBtnID = "0";
+        int numberButton = 0;
+        int firstIndex = 1;
+        String zeroButtonID = "0";
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; ) {
-                Integer secondIndex = j + 1;
+                int secondIndex = j + 1;
 
-                String buttonID = "c" + (String.valueOf(firstIndex)) + "x" + (String.valueOf(secondIndex));
+                String buttonIndex = "c" + (String.valueOf(firstIndex)) +
+                        "x" + (String.valueOf(secondIndex));
 
                 // Get button ID
-                Button btnID = GetButtonID(buttonID);
+                Button buttonID = GetButtonID(buttonIndex);
 
-                btnID.setText(randomArray[numberButton]);
+                buttonID.setText(randomArray[numberButton]);
 
                 if (Integer.valueOf(randomArray[numberButton]) == 0) {
-                    btnID.setVisibility(View.INVISIBLE);
-                    zeroBtnID = buttonID;
+                    buttonID.setVisibility(View.INVISIBLE);
+                    zeroButtonID = buttonIndex;
                 }
                 numberButton++;
                 j++;
             }
             firstIndex++;
         }
-        return zeroBtnID;
+        return zeroButtonID;
     }
 
     /**
      * Setting up buttons as may be pressed.
      *
-     * @param zeroBtnID ID for zeroBtn
+     * @param zeroBtnID   ID for zeroBtn
      * @param randomArray Main array for setting clickable buttons.
      */
     public void SetPressedKeys(String zeroBtnID, final String[] randomArray) {
 
-        String aroundButtonH1 = "0";
-        String aroundButtonW1 = "0";
-        String aroundButtonH2 = "0";
-        String aroundButtonW2 = "0";
+        String activeButtonH1 = "0";
+        String activeButtonW1 = "0";
+        String activeButtonH2 = "0";
+        String activeButtonW2 = "0";
 
         if (!zeroBtnID.equals("0")) {
             String firstIndex = String.valueOf(zeroBtnID.charAt(1));
             String secondIndex = String.valueOf(zeroBtnID.charAt(3));
 
-            Integer aroundCellH1 = Integer.valueOf(secondIndex) - 1;
-            Integer aroundCellH2 = Integer.valueOf(secondIndex) + 1;
-            Integer aroundCellW1 = Integer.valueOf(firstIndex) - 1;
-            Integer aroundCellW2 = Integer.valueOf(firstIndex) + 1;
+            int activeCellH1 = Integer.valueOf(secondIndex) - 1;
+            int activeCellH2 = Integer.valueOf(secondIndex) + 1;
+            int activeCellW1 = Integer.valueOf(firstIndex) - 1;
+            int activeCellW2 = Integer.valueOf(firstIndex) + 1;
 
-            if (aroundCellH1 < 5 && aroundCellH1 > 0) {
-                aroundButtonH1 = "c" + firstIndex + "x" + aroundCellH1;
+            if (activeCellH1 < 5 && activeCellH1 > 0) {
+                activeButtonH1 = "c" + firstIndex + "x" + activeCellH1;
             }
-            if (aroundCellH2 < 5 && aroundCellH2 > 0) {
-                aroundButtonH2 = "c" + firstIndex + "x" + aroundCellH2;
+            if (activeCellH2 < 5 && activeCellH2 > 0) {
+                activeButtonH2 = "c" + firstIndex + "x" + activeCellH2;
             }
-            if (aroundCellW1 < 5 && aroundCellW1 > 0) {
-                aroundButtonW1 = "c" + aroundCellW1 + "x" + secondIndex;
+            if (activeCellW1 < 5 && activeCellW1 > 0) {
+                activeButtonW1 = "c" + activeCellW1 + "x" + secondIndex;
             }
-            if (aroundCellW2 < 5 && aroundCellW2 > 0) {
-                aroundButtonW2 = "c" + aroundCellW2 + "x" + secondIndex;
+            if (activeCellW2 < 5 && activeCellW2 > 0) {
+                activeButtonW2 = "c" + activeCellW2 + "x" + secondIndex;
             }
         }
 
-        final String aroundButtons[] = new String[]{aroundButtonW1, aroundButtonH1, aroundButtonW2, aroundButtonH2};
+        final String[] aroundButtons = new String[]{activeButtonW1, activeButtonH1,
+                activeButtonW2, activeButtonH2};
 
         for (int n = 0; n < aroundButtons.length; ) {
 
-            Integer stringID = getResources().getIdentifier(aroundButtons[n], "id", getPackageName());
-            Button ButtonNumID = findViewById(stringID);
+            // Get button ID for OnClickListener
+            Button buttonNumID = GetButtonID(aroundButtons[n]);
 
             if (!aroundButtons[n].equals("0")) {
 
                 final int keyIndex = n;
 
-                ButtonNumID.setOnClickListener(new View.OnClickListener() {
+                buttonNumID.setOnClickListener(new View.OnClickListener() {
 
                     /**
                      * Override onClick method for ClickListener
@@ -198,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
         valuePressedKey = String.valueOf(pressedBtn.getText());
 
-        Integer posNum = 0;
+        int posNum = 0;
         for (String aRandomArray : randomArray) {
             if (aRandomArray.equals(valuePressedKey)) {
                 pressedKeyPos = posNum;
@@ -222,14 +224,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(refresh);
         overridePendingTransition(0, 0);
         this.finish();
-
-        //recreate();
     }
 
-    public Button GetButtonID (String buttonName) {
+    public Button GetButtonID(String buttonName) {
         int resID = getResources().getIdentifier(buttonName, "id", getPackageName());
         return findViewById(resID);
     }
+}
+///******///   TRASH CODE AREA   ///******///
+
+
+//recreate();
+
+//    public static String[] StartArrayGenerator() {
+//
+//        int arrayLength = 16;
+//        String[] startArray = new String[arrayLength];
+//
+//        for (int i = 0; i < arrayLength; i++) {
+//            startArray[i] = String.valueOf(i);
+//        }
+//
+//
+//        return startArray;
+//    }
 
 //    /**
 //     * Create the new randomized Array for starting new game.
@@ -244,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //        return randomArray;
 //    }
-}
+
 
     /*
     public Integer CheckWin(String[] nextTurnArray, String[] startArray) {
