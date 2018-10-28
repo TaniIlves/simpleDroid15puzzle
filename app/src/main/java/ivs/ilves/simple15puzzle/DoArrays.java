@@ -3,7 +3,7 @@ package ivs.ilves.simple15puzzle;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class DoArrays {
+public class DoArrays extends MainActivity{
 
     /**
      * Create the new randomized Array for starting new game.

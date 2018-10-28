@@ -3,6 +3,7 @@ package ivs.ilves.simple15puzzle;
 //import android.content.Context;
 //import android.content.DialogInterface;
 //import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Making the first array.
         String[] startArray = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "0"};
-
 
         if (getNextTurnArray() == null) {
 
@@ -216,7 +216,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         MainActivity.setNextTurnArray(randomArray);
-        recreate();
+
+        overridePendingTransition(0, 0);
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+        overridePendingTransition(0, 0);
+        this.finish();
+
+        //recreate();
     }
 
     public Button GetButtonID (String buttonName) {
