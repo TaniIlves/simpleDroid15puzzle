@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">15puzzle</string>
+    <string name="app_name">Simple Droid 15 Puzzle</string>
     <string name="c1x1">c1x1</string>
     <string name="c1x2">c1x2</string>
     <string name="c1x3">c1x3</string>
@@ -16,4 +16,8 @@
     <string name="c4x2">c4x2</string>
     <string name="c4x3">c4x3</string>
     <string name="c4x4">c4x4</string>
+
+
+    <string name="welcome">Welcome!!!</string>
+    <string name="reload">Reload</string>
 </resources>

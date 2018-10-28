@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 //import android.widget.Toast;
 import java.util.Arrays;
-import java.util.Collections;
+//import java.util.Collections;
 
 /**
  * Main class
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         if (getNextTurnArray() == null) {
 
             // Create and returning the randomized array.
-            randomArray = RandomizeArray(startArray);
+            randomArray = DoArrays.RandomizeArray(startArray);
 
         } else {
 
@@ -82,20 +82,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Create the new randomized Array for starting new game.
-     *
-     * @param startArray Starting array.
-     * @return Return the randomized "randomArray".
-     */
-    public String[] RandomizeArray(String[] startArray) {
-
-        String[] randomArray = startArray;
-        Collections.shuffle(Arrays.asList(randomArray));
-
-        return randomArray;
-    }
-
-    /**
      * Generate the new game field by randomized array.
      *
      * @param randomArray Posting randomized Array of elements for game field creation.
@@ -112,8 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 Integer secondIndex = j + 1;
 
                 String buttonID = "c" + (String.valueOf(firstIndex)) + "x" + (String.valueOf(secondIndex));
-                int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-                Button btnID = findViewById(resID);
+
+                // Get button ID
+                Button btnID = GetButtonID(buttonID);
 
                 btnID.setText(randomArray[numberButton]);
 
@@ -206,17 +193,17 @@ public class MainActivity extends AppCompatActivity {
         Integer zeroKeyPos = null;
         Integer pressedKeyPos = null;
 
-        Integer pressedID = getResources().getIdentifier(pressedKeyName, "id", getPackageName());
-        Button pressedBtn = findViewById(pressedID);
+        // Get pressed button ID.
+        Button pressedBtn = GetButtonID(pressedKeyName);
 
         valuePressedKey = String.valueOf(pressedBtn.getText());
 
         Integer posNum = 0;
-        for (int n = 0; n < randomArray.length; n++) {
-            if (randomArray[n].equals(valuePressedKey)) {
+        for (String aRandomArray : randomArray) {
+            if (aRandomArray.equals(valuePressedKey)) {
                 pressedKeyPos = posNum;
             }
-            if (randomArray[n].equals("0")) {
+            if (aRandomArray.equals("0")) {
                 zeroKeyPos = posNum;
             }
             posNum++;
@@ -231,6 +218,25 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.setNextTurnArray(randomArray);
         recreate();
     }
+
+    public Button GetButtonID (String buttonName) {
+        int resID = getResources().getIdentifier(buttonName, "id", getPackageName());
+        return findViewById(resID);
+    }
+
+//    /**
+//     * Create the new randomized Array for starting new game.
+//     *
+//     * @param startArray Starting array.
+//     * @return Return the randomized "randomArray".
+//     */
+//    public String[] RandomizeArray(String[] startArray) {
+//
+//        String[] randomArray = startArray;
+//        Collections.shuffle(Arrays.asList(randomArray));
+//
+//        return randomArray;
+//    }
 }
 
     /*
