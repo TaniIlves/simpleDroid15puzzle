@@ -8,9 +8,27 @@ import ivs.ilves.simple15puzzle.Tools.DebugTools;
 
 public class Board {
 
-    String ButtonIndex;
-    Integer ButtonID;
-    String ButtonValue;
+    private static Integer boardSize = 0;
+
+
+    /**
+     * GET: Game board size
+     *
+     * @return Size of game board
+     */
+    public static Integer getBoardSize() {
+        return boardSize;
+    }
+
+    /**
+     * SET: Redefined size of game board (default size = 16)
+     *
+     * @param boardSize Size of game board
+     */
+    public static void setBoardSize(Integer boardSize) {
+        Board.boardSize = boardSize;
+    }
+
 
     /**
      * CREATE: The new randomized Array for starting new game.
@@ -35,13 +53,11 @@ public class Board {
      *
      * @return The started array
      */
-    public static String[] createStartArray() {
+    public static String[] createStartArray(Integer boardSize) {
 
-        int arrayLength = 16;
+        String[] startArray = new String[boardSize];
 
-        String[] startArray = new String[arrayLength];
-
-        for (int i = 0; i < arrayLength - 1; i++) {
+        for (int i = 0; i < boardSize - 1; i++) {
             startArray[i] = String.valueOf(i + 1);
         }
         startArray[15] = String.valueOf(0);

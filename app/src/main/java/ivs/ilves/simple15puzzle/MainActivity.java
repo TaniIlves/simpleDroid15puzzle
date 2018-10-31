@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     //
     // INIT: Static Fields
     //
-    static String[] startArray;
+    private static String[] startArray;
     private static String[] nextTurnArray;
     private static int turnCount = 0;
 
@@ -57,18 +57,26 @@ public class MainActivity extends AppCompatActivity {
         TextView countField = findViewById(R.id.countShow);
         Button reloadBtn = findViewById(R.id.reloadBtn);
 
+
+        //
+        // SET: Initial size of game board
+        //
+        Board.setBoardSize(16);
+
         //
         // CREATE: The first Array
         //
         if (turnCount == 0) {
-            startArray = Board.createStartArray();
+
+            Integer boardSize = Board.getBoardSize();
+            startArray = Board.createStartArray(boardSize);
         }
 
         if (getNextTurnArray() == null) {
 
             //
-            // CREATE:
-            // RETURN: The randomized Array
+            // CREATE: The randomized Array
+            // RETURN: The same
             //
             randomArray = Board.randomizeArray(startArray);
 
@@ -251,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         //
         // SET: The new Array for next turn.
         //
-        MainActivity.setNextTurnArray(randomArray);
+        setNextTurnArray(randomArray);
 
         //
         // Reload MainActivity
