@@ -1,4 +1,4 @@
-package ivs.ilves.simple15puzzle.Fragments;
+package ivs.ilves.simple15puzzle.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

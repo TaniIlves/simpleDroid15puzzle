@@ -1,4 +1,4 @@
-package ivs.ilves.simple15puzzle.Tools;
+package ivs.ilves.simple15puzzle.tools;
 
 import android.util.Log;
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
-import ivs.ilves.simple15puzzle.GameBoard.Board;
+import ivs.ilves.simple15puzzle.gameboard.Board;
 
 
 /**

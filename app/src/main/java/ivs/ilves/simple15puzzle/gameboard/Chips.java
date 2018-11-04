@@ -1,4 +1,4 @@
-package ivs.ilves.simple15puzzle.GameBoard;
+package ivs.ilves.simple15puzzle.gameboard;
 
 
 public class Chips extends Board {

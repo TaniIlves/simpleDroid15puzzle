@@ -1,9 +1,9 @@
-package ivs.ilves.simple15puzzle.GameBoard;
+package ivs.ilves.simple15puzzle.gameboard;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-import ivs.ilves.simple15puzzle.Tools.DebugTools;
+import ivs.ilves.simple15puzzle.tools.DebugTools;
 
 
 public class Board {
